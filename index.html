@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baicheng</title>
+<style>
+:root{--bg:#fafaf8;--card:#fff;--text:#1d1d1f;--muted:#6b6b70;--line:#e6e4df;--accent:#2f6f5e;--accent-soft:#e3efea}
+@media (prefers-color-scheme:dark){:root{--bg:#151515;--card:#1f1f1f;--text:#ececec;--muted:#9a9a9f;--line:#2e2e2e;--accent:#7cc4ad;--accent-soft:#1f302b}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.logo{font-weight:700;font-size:18px;letter-spacing:.5px}
+.links{display:flex;gap:18px;align-items:center;font-size:14px}
+.links a{color:var(--muted);text-decoration:none}.links a:hover{color:var(--text)}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.lang button{background:none;border:0;padding:4px 10px;font-size:13px;color:var(--muted);cursor:pointer}
+.lang button.on{background:var(--accent);color:#fff}
+header{padding:70px 0 60px}
+.avatar{width:84px;height:84px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-size:34px;font-weight:700;margin-bottom:24px}
+h1{font-size:clamp(30px,6vw,46px);line-height:1.2;margin-bottom:14px}
+.lead{font-size:18px;color:var(--muted);max-width:600px}
+.btns{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
+.btn{padding:10px 20px;border-radius:10px;text-decoration:none;font-size:15px;font-weight:500}
+.btn.primary{background:var(--accent);color:#fff}
+.btn.ghost{border:1px solid var(--line);color:var(--text)}
+section{padding:50px 0;border-top:1px solid var(--line)}
+h2{font-size:24px;margin-bottom:22px}
+.about{color:var(--muted);max-width:680px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.tag{background:var(--accent-soft);color:var(--accent);padding:4px 12px;border-radius:999px;font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.thumb{height:140px;display:grid;place-items:center;font-size:40px}
+.card .body{padding:16px 18px 20px}
+.card h3{font-size:17px;margin-bottom:6px}
+.card p{font-size:14px;color:var(--muted)}
+.contact a{color:var(--accent)}
+footer{padding:30px 0 40px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+@media (max-width:560px){.links a{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <div class="logo">Baicheng</div>
+    <div class="links">
+      <a href="#about" data-i="nav_about"></a>
+      <a href="#work" data-i="nav_work"></a>
+      <a href="#contact" data-i="nav_contact"></a>
+      <div class="lang">
+        <button data-l="zh">中</button><button data-l="en">EN</button><button data-l="de">DE</button>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <div class="avatar">B</div>
+    <h1 data-i="hi"></h1>
+    <p class="lead" data-i="lead"></p>
+    <div class="btns">
+      <a class="btn primary" href="#work" data-i="see_work"></a>
+      <a class="btn ghost" href="#contact" data-i="contact_me"></a>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2 data-i="nav_about"></h2>
+    <p class="about" data-i="about"></p>
+    <div class="tags" id="tags"></div>
+  </section>
+
+  <section id="work">
+    <h2 data-i="nav_work"></h2>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2 data-i="nav_contact"></h2>
+    <p class="about"><span data-i="contact_txt"></span><br>
+      ✉️ <a href="mailto:hello@example.com">hello@example.com</a> ·
+      <a href="https://github.com/">GitHub</a></p>
+  </section>
+
+  <footer>© <span id="y"></span> Baicheng · <span data-i="made"></span></footer>
+</div>
+
+<script>
+const T={
+ zh:{nav_about:"关于我",nav_work:"作品集",nav_contact:"联系",hi:"你好，我是 Baicheng 👋",
+  lead:"生活在德国。这里是我的个人网站，记录我做过的项目和想法。",see_work:"查看作品",contact_me:"联系我",
+  about:"在这里写一段自我介绍：你是谁、做什么、对什么感兴趣。可以写你的专业背景、正在学习的东西，或者你的爱好。",
+  tags:["网页设计","编程","摄影","旅行"],contact_txt:"欢迎通过邮件或 GitHub 联系我。",made:"用 GitHub Pages 搭建",
+  works:[["🌐","个人网站","你现在看到的这个网站，三语切换。"],["📷","摄影集","在德国拍的一些照片。"],["🛠️","项目三","简单描述这个项目做了什么。"],["✍️","项目四","简单描述这个项目做了什么。"]]},
+ en:{nav_about:"About",nav_work:"Work",nav_contact:"Contact",hi:"Hi, I'm Baicheng 👋",
+  lead:"Based in Germany. This is my personal site, where I share projects and ideas.",see_work:"See my work",contact_me:"Get in touch",
+  about:"Write a short introduction here: who you are, what you do and what you care about — your background, what you're learning, or your hobbies.",
+  tags:["Web design","Coding","Photography","Travel"],contact_txt:"Feel free to reach out by email or on GitHub.",made:"Built with GitHub Pages",
+  works:[["🌐","Personal website","The site you're looking at, in three languages."],["📷","Photo series","Photos taken around Germany."],["🛠️","Project three","A short description of what this project does."],["✍️","Project four","A short description of what this project does."]]},
+ de:{nav_about:"Über mich",nav_work:"Projekte",nav_contact:"Kontakt",hi:"Hallo, ich bin Baicheng 👋",
+  lead:"Ich lebe in Deutschland. Hier zeige ich meine Projekte und Ideen.",see_work:"Projekte ansehen",contact_me:"Kontakt aufnehmen",
+  about:"Schreib hier eine kurze Vorstellung: wer du bist, was du machst und was dich interessiert – Hintergrund, aktuelle Lernthemen oder Hobbys.",
+  tags:["Webdesign","Programmieren","Fotografie","Reisen"],contact_txt:"Schreib mir gern per E-Mail oder auf GitHub.",made:"Erstellt mit GitHub Pages",
+  works:[["🌐","Persönliche Website","Diese Seite – dreisprachig."],["📷","Fotoserie","Fotos aus Deutschland."],["🛠️","Projekt drei","Kurze Beschreibung des Projekts."],["✍️","Projekt vier","Kurze Beschreibung des Projekts."]]}
+};
+const colors=["#e3efea","#f3e9dc","#e4e8f4","#f2e3e8"];
+function setLang(l){
+ const t=T[l];document.documentElement.lang=l;
+ document.querySelectorAll("[data-i]").forEach(e=>e.textContent=t[e.dataset.i]);
+ document.getElementById("tags").innerHTML=t.tags.map(x=>`<span class="tag">${x}</span>`).join("");
+ document.getElementById("grid").innerHTML=t.works.map((w,i)=>`<div class="card"><div class="thumb" style="background:${colors[i%4]}">${w[0]}</div><div class="body"><h3>${w[1]}</h3><p>${w[2]}</p></div></div>`).join("");
+ document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("on",b.dataset.l===l));
+ try{localStorage.setItem("lang",l)}catch(e){}
+}
+document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>setLang(b.dataset.l));
+document.getElementById("y").textContent=new Date().getFullYear();
+let saved;try{saved=localStorage.getItem("lang")}catch(e){}
+const nav=(navigator.language||"").slice(0,2);
+setLang(saved||(T[nav]?nav:"zh"));
+</script>
+</body>
+</html>
